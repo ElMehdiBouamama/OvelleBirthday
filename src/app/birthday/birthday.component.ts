@@ -30,6 +30,7 @@ export class BirthdayComponent implements OnInit {
     const canvas = thes.renderer.domElement;
     thes.uniforms.iResolution.value.set(canvas.width, canvas.height, 1);
     thes.uniforms.iTime.value = time;
+    thes.uniforms.iDate.value.w = time;
     thes.renderer.render(thes.scene, thes.camera);
     requestAnimationFrame(thes.render);
   }
@@ -63,7 +64,7 @@ export class BirthdayComponent implements OnInit {
     this.uniforms = {
       iTime: { value: 0 },
       iResolution: { value: new THREE.Vector3() },
-      iDate: { value: new THREE.Vector4() },
+      iDate: { value: new THREE.Vector4(2020,10,11,0) },
     };
     this.material = new THREE.ShaderMaterial({
       fragmentShader: fragmentShader,
